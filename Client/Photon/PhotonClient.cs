@@ -48,13 +48,17 @@ namespace Client.Photon
 			peer = new PhotonPeer(this, ConnectionProtocol.Tcp);
 			peer.Connect("127.0.0.1:5678", "ChatServer");
 			serviceCancellationTokenSource = new CancellationTokenSource();
-			Task.Run(async () =>
+			var context = SynchronizationContext.Current;
+			Task.Run(() =>
 			{
-				while (true)
+				context.Post(async _ =>
 				{
-					peer.Service();
-					await Task.Delay(FrameTime);
-				}
+					while (true)
+					{
+						peer.Service();
+						await Task.Delay(FrameTime);
+					}
+				}, null);
 			}, serviceCancellationTokenSource.Token);
 		}
 
@@ -99,7 +103,8 @@ namespace Client.Photon
 		public void SendOperationRequest(byte operationCode, Dictionary<byte, object> paramDic)
 		{
 			if (peer == null) { return; }
-			peer.OpCustom(operationCode, paramDic, false);
+
+			peer.OpCustom(operationCode, paramDic, true);
 		}
 
 		public void DebugReturn(DebugLevel level, string message)
