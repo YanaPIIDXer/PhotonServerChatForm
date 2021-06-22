@@ -20,7 +20,8 @@ namespace Client
 
 		private void logInButton_Click(object sender, EventArgs e)
 		{
-				
+			PhotonClient.Instance.OnConnected = () => MessageBox.Show("Connected");
+			PhotonClient.Instance.Connect();
 		}
 	}
 }
