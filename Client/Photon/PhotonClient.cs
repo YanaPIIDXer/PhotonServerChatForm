@@ -91,6 +91,17 @@ namespace Client.Photon
 			}
 		}
 
+		/// <summary>
+		/// オペレーションリクエスト送信
+		/// </summary>
+		/// <param name="operationCode">オペレーションコード</param>
+		/// <param name="paramDic">パラメータDictionary</param>
+		public void SendOperationRequest(byte operationCode, Dictionary<byte, object> paramDic)
+		{
+			if (peer == null) { return; }
+			peer.OpCustom(operationCode, paramDic, false);
+		}
+
 		public void DebugReturn(DebugLevel level, string message)
 		{
 		}
