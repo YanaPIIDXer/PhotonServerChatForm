@@ -35,6 +35,8 @@ namespace Client.Photon
 		
 		public void Connect()
 		{
+			Disconnect();		// 一旦切断
+
 			peer = new PhotonPeer(this, ConnectionProtocol.Tcp);
 			peer.Connect("127.0.0.1:5678", "ChatServer");
 			serviceCancellationTokenSource = new CancellationTokenSource();
@@ -46,6 +48,19 @@ namespace Client.Photon
 					await Task.Delay(FrameTime);
 				}
 			}, serviceCancellationTokenSource.Token);
+		}
+
+		/// <summary>
+		/// 切断
+		/// </summary>
+		public void Disconnect()
+		{
+			CancelService();
+			if (peer != null)
+			{
+				peer.Disconnect();
+				peer = null;
+			}
 		}
 
 		/// <summary>
