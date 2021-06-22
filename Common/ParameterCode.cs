@@ -10,6 +10,6 @@ namespace Common
 	public static class ParameterCode
 	{
 		// LogIn Request
-		public const UserName = 1;
+		public const byte UserName = 1;
 	}
 }
