@@ -12,11 +12,11 @@ namespace Common
 		/// <summary>
 		/// 成功
 		/// </summary>
-		public static readonly short Success = 0;
+		public const short Success = 0;
 
 		/// <summary>
 		/// 既にログイン中
 		/// </summary>
-		public static readonly short AlreadyLogIn = 1;
+		public const short AlreadyLogIn = 1;
 	}
 }

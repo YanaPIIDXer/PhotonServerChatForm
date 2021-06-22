@@ -12,6 +12,6 @@ namespace Common
 		/// <summary>
 		/// メッセージ受信
 		/// </summary>
-		public static readonly byte RecvMessage = 1;
+		public const byte RecvMessage = 1;
 	}
 }

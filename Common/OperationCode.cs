@@ -12,11 +12,11 @@ namespace Common
 		/// <summary>
 		/// ログイン
 		/// </summary>
-		public static readonly byte LogIn = 1;
+		public const byte LogIn = 1;
 
 		/// <summary>
 		/// メッセージ送信
 		/// </summary>
-		public static readonly byte SendMessgage = 2;
+		public const byte SendMessgage = 2;
 	}
 }
