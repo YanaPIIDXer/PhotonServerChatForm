@@ -29,6 +29,11 @@ namespace Client.Photon
 		public Action OnConnected { set; private get; }
 
 		/// <summary>
+		/// 受信イベントリスナ
+		/// </summary>
+		public IReceiveEventListener ReceiveEventListener { set; private get; }
+
+		/// <summary>
 		/// Serviceのキャンセレーショントークンソース
 		/// </summary>
 		private CancellationTokenSource serviceCancellationTokenSource = null;
@@ -92,6 +97,7 @@ namespace Client.Photon
 
 		public void OnOperationResponse(OperationResponse operationResponse)
 		{
+			ReceiveEventListener?.OnOperationResponse(operationResponse);
 		}
 
 		public void OnStatusChanged(StatusCode statusCode)
@@ -104,6 +110,7 @@ namespace Client.Photon
 
 		public void OnEvent(EventData eventData)
 		{
+			ReceiveEventListener?.OnEvent(eventData);
 		}
 
 		public void OnMessage(object messages)
