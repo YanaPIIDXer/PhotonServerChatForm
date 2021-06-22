@@ -33,6 +33,9 @@ namespace Client.Photon
 		/// </summary>
 		private CancellationTokenSource serviceCancellationTokenSource = null;
 		
+		/// <summary>
+		/// 接続
+		/// </summary>
 		public void Connect()
 		{
 			Disconnect();		// 一旦切断
